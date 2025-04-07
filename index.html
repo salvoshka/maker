@@ -1,19 +1,722 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maker Discussion - Crypto Memes & Prices</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .meme-container {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .meme-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        .price-card {
+            background: linear-gradient(to right, #00b4db, #0083b0);
+            border-radius: 12px;
+        }
+        .news-card {
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            border-radius: 12px;
+        }
+        .crypto-chart {
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange; }
+        }
+        .coin-flip {
+            animation: flip 2s infinite;
+        }
+        @keyframes flip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(180deg); }
+            100% { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-coins text-3xl text-yellow-400 coin-flip"></i>
+                    <h1 class="text-3xl font-bold">Maker Discussion</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full flex items-center">
+                        <i class="fas fa-wallet mr-2"></i> Connect Wallet
+                    </button>
+                    <button class="bg-white hover:bg-gray-200 text-purple-600 font-bold py-2 px-4 rounded-full">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="typewriter text-xl font-mono bg-black bg-opacity-20 p-2 rounded inline-block">
+                    When Lambo? Soon™ - Current mood: HODLing through the dip...
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Trending Memes Section -->
+                <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-pink-500 to-purple-600 p-4 text-white">
+                        <h2 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-fire mr-2"></i> Trending Memes
+                        </h2>
+                    </div>
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Meme 1 -->
+                        <div class="meme-container p-4 cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">When you buy the dip</h3>
+                                    <p class="text-sm text-gray-600">#BuyTheDip #HODL</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="text-yellow-500"><i class="fas fa-star"></i> 4.8</span>
+                                    <span class="text-red-500"><i class="fas fa-heart"></i> 1.2k</span>
+                                </div>
+                            </div>
+                            <img src="https://i.imgflip.com/7x1q0r.jpg" alt="Crypto meme" class="w-full h-48 object-cover rounded-lg mt-2">
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <span class="text-sm text-gray-500">Posted 2h ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Meme 2 -->
+                        <div class="meme-container p-4 cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">Bitcoin to $100k?</h3>
+                                    <p class="text-sm text-gray-600">#BTC #ToTheMoon</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="text-yellow-500"><i class="fas fa-star"></i> 4.5</span>
+                                    <span class="text-red-500"><i class="fas fa-heart"></i> 890</span>
+                                </div>
+                            </div>
+                            <img src="https://i.imgflip.com/6fz7g1.jpg" alt="Crypto meme" class="w-full h-48 object-cover rounded-lg mt-2">
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <span class="text-sm text-gray-500">Posted 5h ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Meme 3 -->
+                        <div class="meme-container p-4 cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">Altcoin investors be like</h3>
+                                    <p class="text-sm text-gray-600">#AltSeason #WAGMI</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="text-yellow-500"><i class="fas fa-star"></i> 4.9</span>
+                                    <span class="text-red-500"><i class="fas fa-heart"></i> 2.1k</span>
+                                </div>
+                            </div>
+                            <img src="https://i.imgflip.com/7x1q0r.jpg" alt="Crypto meme" class="w-full h-48 object-cover rounded-lg mt-2">
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <span class="text-sm text-gray-500">Posted 1h ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Meme 4 -->
+                        <div class="meme-container p-4 cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-lg">When the FUD hits</h3>
+                                    <p class="text-sm text-gray-600">#FUD #DiamondHands</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <span class="text-yellow-500"><i class="fas fa-star"></i> 4.7</span>
+                                    <span class="text-red-500"><i class="fas fa-heart"></i> 1.5k</span>
+                                </div>
+                            </div>
+                            <img src="https://i.imgflip.com/6fz7g1.jpg" alt="Crypto meme" class="w-full h-48 object-cover rounded-lg mt-2">
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-500 hover:text-blue-700">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <span class="text-sm text-gray-500">Posted 3h ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-50 text-center">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full">
+                            Load More Memes <i class="fas fa-arrow-down ml-2"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Discussion Forum -->
+                <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-500 to-teal-400 p-4 text-white">
+                        <h2 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-comments mr-2"></i> Hot Discussions
+                        </h2>
+                    </div>
+                    <div class="p-4 space-y-4">
+                        <!-- Discussion 1 -->
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <i class="fas fa-user text-purple-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Bitcoin Halving: What to Expect?</h3>
+                                        <p class="text-sm text-gray-500">Posted by CryptoKing42</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-500">2h ago</span>
+                            </div>
+                            <p class="mt-2 text-gray-700">With the next Bitcoin halving approaching, what's everyone's price prediction for BTC in 2024? Personally, I'm seeing $120k as a conservative estimate if history repeats itself.</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <button class="flex items-center text-gray-500 hover:text-blue-500">
+                                        <i class="fas fa-thumbs-up mr-1"></i> 124
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-red-500">
+                                        <i class="fas fa-thumbs-down mr-1"></i> 8
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-purple-500">
+                                        <i class="fas fa-reply mr-1"></i> Reply
+                                    </button>
+                                </div>
+                                <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">#Bitcoin</span>
+                            </div>
+                        </div>
+
+                        <!-- Discussion 2 -->
+                        <div class="border-b pb-4">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-user text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">Ethereum Layer 2 Solutions Comparison</h3>
+                                        <p class="text-sm text-gray-500">Posted by DeFiDegen</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-500">5h ago</span>
+                            </div>
+                            <p class="mt-2 text-gray-700">I've been testing various L2 solutions (Arbitrum, Optimism, zkSync) and want to share my findings. Fees are down 90% compared to mainnet, but which one do you think will dominate in the long run?</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <button class="flex items-center text-gray-500 hover:text-blue-500">
+                                        <i class="fas fa-thumbs-up mr-1"></i> 89
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-red-500">
+                                        <i class="fas fa-thumbs-down mr-1"></i> 3
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-purple-500">
+                                        <i class="fas fa-reply mr-1"></i> Reply
+                                    </button>
+                                </div>
+                                <span class="text-sm bg-purple-100 text-purple-800 px-2 py-1 rounded-full">#Ethereum</span>
+                            </div>
+                        </div>
+
+                        <!-- Discussion 3 -->
+                        <div class="pb-4">
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                                        <i class="fas fa-user text-yellow-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold">New Meme Coin Pumping - Should We Jump In?</h3>
+                                        <p class="text-sm text-gray-500">Posted by MoonShotMaxi</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-gray-500">1h ago</span>
+                            </div>
+                            <p class="mt-2 text-gray-700">Saw this new meme coin $WOOF doing 10x today. Rug pull or legit? The chart looks like early Shiba Inu vibes. Anyone done any research on the team?</p>
+                            <div class="mt-3 flex justify-between items-center">
+                                <div class="flex space-x-4">
+                                    <button class="flex items-center text-gray-500 hover:text-blue-500">
+                                        <i class="fas fa-thumbs-up mr-1"></i> 56
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-red-500">
+                                        <i class="fas fa-thumbs-down mr-1"></i> 12
+                                    </button>
+                                    <button class="flex items-center text-gray-500 hover:text-purple-500">
+                                        <i class="fas fa-reply mr-1"></i> Reply
+                                    </button>
+                                </div>
+                                <span class="text-sm bg-pink-100 text-pink-800 px-2 py-1 rounded-full">#MemeCoin</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-gray-50">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-user text-blue-600"></i>
+                            </div>
+                            <input type="text" placeholder="Start a new discussion..." class="flex-1 border rounded-full py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
+                                Post
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- Price Calculator -->
+                <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-500 to-blue-400 p-4 text-white">
+                        <h2 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-calculator mr-2"></i> Crypto Calculator
+                        </h2>
+                    </div>
+                    <div class="p-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Select Coin</label>
+                            <div class="relative">
+                                <select class="block appearance-none w-full bg-gray-100 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                                    <option>Bitcoin (BTC)</option>
+                                    <option>Ethereum (ETH)</option>
+                                    <option>Binance Coin (BNB)</option>
+                                    <option>Cardano (ADA)</option>
+                                    <option>Solana (SOL)</option>
+                                    <option>Dogecoin (DOGE)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Amount</label>
+                            <input type="number" class="w-full bg-gray-100 border border-gray-300 text-gray-700 py-3 px-4 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500" placeholder="0.00">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Convert to</label>
+                            <div class="relative">
+                                <select class="block appearance-none w-full bg-gray-100 border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                                    <option>US Dollar (USD)</option>
+                                    <option>Euro (EUR)</option>
+                                    <option>Japanese Yen (JPY)</option>
+                                    <option>British Pound (GBP)</option>
+                                    <option>Bitcoin (BTC)</option>
+                                    <option>Ethereum (ETH)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-card p-4 text-white mb-4">
+                            <div class="text-sm">Estimated Value</div>
+                            <div class="text-3xl font-bold">$42,690.45</div>
+                            <div class="text-sm mt-1">+5.2% (24h)</div>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-lg">
+                            Calculate <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Market Overview -->
+                <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-500 to-orange-400 p-4 text-white">
+                        <h2 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-chart-line mr-2"></i> Market Overview
+                        </h2>
+                    </div>
+                    <div class="p-4">
+                        <div class="crypto-chart mb-4 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-chart-pie text-5xl text-gray-300 mb-2"></i>
+                                <p class="text-gray-500">Live chart would appear here</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <!-- Coin 1 -->
+                            <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center">
+                                        <i class="fab fa-bitcoin text-orange-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">BTC</div>
+                                        <div class="text-xs text-gray-500">Bitcoin</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold">$42,690.45</div>
+                                    <div class="text-xs text-green-500">+5.2%</div>
+                                </div>
+                            </div>
+                            <!-- Coin 2 -->
+                            <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center">
+                                        <i class="fab fa-ethereum text-purple-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">ETH</div>
+                                        <div class="text-xs text-gray-500">Ethereum</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold">$2,341.78</div>
+                                    <div class="text-xs text-green-500">+3.7%</div>
+                                </div>
+                            </div>
+                            <!-- Coin 3 -->
+                            <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+                                        <i class="fas fa-coins text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">BNB</div>
+                                        <div class="text-xs text-gray-500">Binance Coin</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold">$312.56</div>
+                                    <div class="text-xs text-red-500">-1.2%</div>
+                                </div>
+                            </div>
+                            <!-- Coin 4 -->
+                            <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="fas fa-bolt text-blue-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">SOL</div>
+                                    <div class="text-xs text-gray-500">Solana</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold">$98.34</div>
+                                <div class="text-xs text-green-500">+8.5%</div>
+                            </div>
+                        </div>
+                        <!-- Coin 5 -->
+                        <div class="flex justify-between items-center p-2 hover:bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <i class="fab fa-reddit-alien text-red-500"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold">DOGE</div>
+                                    <div class="text-xs text-gray-500">Dogecoin</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold">$0.0845</div>
+                                <div class="text-xs text-red-500">-2.1%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button class="text-blue-500 hover:text-blue-700 font-medium">
+                            View All Coins <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Crypto News -->
+            <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-400 p-4 text-white">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-newspaper mr-2"></i> Latest News
+                    </h2>
+                </div>
+                <div class="p-4 space-y-4">
+                    <!-- News 1 -->
+                    <div class="news-card p-3 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-white p-2 rounded-lg">
+                                <i class="fas fa-bitcoin text-yellow-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Bitcoin ETF Approval Expected This Week</h3>
+                                <p class="text-sm text-gray-700 mt-1">SEC insiders suggest multiple Bitcoin spot ETFs could be approved simultaneously to avoid giving any single issuer an advantage.</p>
+                                <div class="flex items-center mt-2 text-xs text-gray-500">
+                                    <span>CoinDesk</span>
+                                    <span class="mx-2">•</span>
+                                    <span>2h ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News 2 -->
+                    <div class="news-card p-3 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-white p-2 rounded-lg">
+                                <i class="fab fa-ethereum text-purple-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Ethereum Dencun Upgrade Goes Live on Testnet</h3>
+                                <p class="text-sm text-gray-700 mt-1">The upgrade introduces proto-danksharding (EIP-4844), which is expected to significantly reduce L2 transaction fees.</p>
+                                <div class="flex items-center mt-2 text-xs text-gray-500">
+                                    <span>The Block</span>
+                                    <span class="mx-2">•</span>
+                                    <span>5h ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- News 3 -->
+                    <div class="news-card p-3 rounded-lg">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-white p-2 rounded-lg">
+                                <i class="fas fa-globe text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">Binance Settles with US Regulators for $4.3 Billion</h3>
+                                <p class="text-sm text-gray-700 mt-1">The exchange will pay one of the largest corporate penalties in US history, with CEO Changpeng Zhao stepping down.</p>
+                                <div class="flex items-center mt-2 text-xs text-gray-500">
+                                    <span>Decrypt</span>
+                                    <span class="mx-2">•</span>
+                                    <span>1d ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button class="text-green-500 hover:text-green-700 font-medium">
+                            More News <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-coins text-yellow-400 mr-2"></i> Maker Discussion
+                </h3>
+                <p class="text-gray-400">Your go-to platform for crypto memes, discussions, and market analysis. WAGMI!</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-reddit"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Resources</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Crypto Glossary</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Beginner's Guide</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Market Cap Rankings</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Gas Fee Tracker</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Meme Generator</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Community</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Forum Rules</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Moderators</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Top Contributors</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">AMA Schedule</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Bounty Programs</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Subscribe</h4>
+                <p class="text-gray-400 mb-4">Get the latest memes and market updates straight to your inbox.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="bg-gray-700 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 w-full">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-r-lg">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-xs text-gray-500">
+                    We respect your privacy. No spam, ever.
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
+            <p>© 2023 Maker Discussion. All rights reserved. Not financial advice.</p>
+            <p class="mt-2 text-xs">When in doubt, zoom out. DYOR. NFA.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Meme Generator Modal (hidden by default) -->
+<div id="memeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl w-full max-w-2xl p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold">Create Your Meme</h3>
+            <button id="closeMemeModal" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Meme Template</label>
+            <div class="grid grid-cols-3 gap-2">
+                <div class="border rounded-lg p-2 cursor-pointer hover:bg-gray-100">
+                    <img src="https://i.imgflip.com/7x1q0r.jpg" alt="Meme template" class="w-full h-24 object-cover">
+                </div>
+                <div class="border rounded-lg p-2 cursor-pointer hover:bg-gray-100">
+                    <img src="https://i.imgflip.com/6fz7g1.jpg" alt="Meme template" class="w-full h-24 object-cover">
+                </div>
+                <div class="border rounded-lg p-2 cursor-pointer hover:bg-gray-100">
+                    <img src="https://i.imgflip.com/7x1q0r.jpg" alt="Meme template" class="w-full h-24 object-cover">
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Top Text</label>
+            <input type="text" class="w-full border rounded-lg py-2 px-4" placeholder="When moon?">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 mb-2">Bottom Text</label>
+            <input type="text" class="w-full border rounded-lg py-2 px-4" placeholder="Soon™">
+        </div>
+        <div class="flex justify-end space-x-3">
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">
+                Cancel
+            </button>
+            <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg">
+                Generate Meme <i class="fas fa-magic ml-1"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Simple price update simulation
+    function updatePrices() {
+        const coins = document.querySelectorAll('.market-overview-coin');
+        coins.forEach(coin => {
+            const priceElement = coin.querySelector('.coin-price');
+            const changeElement = coin.querySelector('.coin-change');
+            
+            // Random price change between -5% and +10%
+            const change = (Math.random() * 15 - 5).toFixed(2);
+            const isPositive = change >= 0;
+            
+            // Update the change display
+            changeElement.textContent = `${isPositive ? '+' : ''}${change}%`;
+            changeElement.className = `text-xs ${isPositive ? 'text-green-500' : 'text-red-500'}`;
+            
+            // Update the price (simple simulation)
+            const currentPrice = parseFloat(priceElement.textContent.replace('$', '').replace(',', ''));
+            const newPrice = (currentPrice * (1 + change/100)).toFixed(2);
+            priceElement.textContent = `$${newPrice}`;
+        });
+    }
+
+    // Update prices every 10 seconds
+    setInterval(updatePrices, 10000);
+
+    // Meme modal functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const memeModal = document.getElementById('memeModal');
+        const closeMemeModal = document.getElementById('closeMemeModal');
+        
+        // Show create meme button in header
+        const createMemeBtn = document.createElement('button');
+        createMemeBtn.className = 'bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-full flex items-center mr-4';
+        createMemeBtn.innerHTML = '<i class="fas fa-plus mr-2"></i> Create Meme';
+        createMemeBtn.onclick = function() {
+            memeModal.classList.remove('hidden');
+        };
+        document.querySelector('header .flex.items-center.space-x-4').prepend(createMemeBtn);
+        
+        // Close modal
+        closeMemeModal.onclick = function() {
+            memeModal.classList.add('hidden');
+        };
+        
+        // Close when clicking outside
+        memeModal.onclick = function(e) {
+            if (e.target === memeModal) {
+                memeModal.classList.add('hidden');
+            }
+        };
+        
+        // Simulate meme generation
+        const generateMemeBtn = document.querySelector('#memeModal button.bg-purple-600');
+        generateMemeBtn.onclick = function() {
+            alert('Meme generated! (This would actually create the meme in a real app)');
+            memeModal.classList.add('hidden');
+        };
+    });
+</script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=salvoshka/maker" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
