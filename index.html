@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maker Discussion - Crypto Memes & Prices</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .meme-container {
@@ -65,9 +66,10 @@
                     <h1 class="text-3xl font-bold">Maker Discussion</h1>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full flex items-center">
-                        <i class="fas fa-wallet mr-2"></i> Connect Wallet
-                    </button>
+                   <button id="connectWalletBtn" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-full flex items-center">
+    <i class="fas fa-wallet mr-2"></i> Connect Wallet
+</button>
+
                     <button class="bg-white hover:bg-gray-200 text-purple-600 font-bold py-2 px-4 rounded-full">
                         <i class="fas fa-user"></i>
                     </button>
@@ -718,5 +720,30 @@
         };
     });
 </script>
+    <script>
+  const connectWalletBtn = document.getElementById("connectWalletBtn");
+
+  connectWalletBtn.addEventListener("click", async () => {
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        // Request wallet connection
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner();
+        const address = await signer.getAddress();
+
+        connectWalletBtn.innerHTML = `<i class="fas fa-wallet mr-2"></i> ${address.slice(0, 6)}...${address.slice(-4)}`;
+        connectWalletBtn.disabled = true;
+        connectWalletBtn.classList.add("cursor-default", "opacity-80");
+      } catch (err) {
+        console.error("Connection rejected:", err);
+        alert("Wallet connection failed. Please try again.");
+      }
+    } else {
+      alert("MetaMask is not installed. Please install it to use this feature.");
+    }
+  });
+</script>
+
 <p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=salvoshka/maker" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
